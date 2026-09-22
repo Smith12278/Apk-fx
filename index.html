@@ -1,50 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forex Trading Simulator</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ForexPro Demo</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Forex Trading Simulator</h1>
-    <p>Educational demo — no real money or broker connection.</p>
-  </header>
+<header class="topbar">
+  <div class="brand">Forex<span>Pro</span></div>
+  <div class="account">Demo Account <b id="balance">$10,000.00</b></div>
+</header>
 
-  <main class="container">
-    <section class="card">
-      <h2>Market</h2>
-      <div class="market">
-        <span>EUR/USD</span>
-        <strong id="price">1.0850</strong>
+<main>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">TRADING DASHBOARD</p>
+      <h1>Practice forex trading</h1>
+      <p class="muted">A realistic demo interface for learning. No real orders are sent.</p>
+    </div>
+    <button class="reset" onclick="resetAccount()">Reset account</button>
+  </section>
+
+  <section class="pairs" id="pairs"></section>
+
+  <section class="grid">
+    <div class="panel chart-panel">
+      <div class="panel-head">
+        <div><h2 id="chartPair">EUR/USD</h2><span class="muted" id="chartPrice">1.0850</span></div>
+        <span class="badge">DEMO</span>
       </div>
-      <div class="buttons">
-        <button class="buy" onclick="placeTrade('BUY')">BUY</button>
-        <button class="sell" onclick="placeTrade('SELL')">SELL</button>
+      <canvas id="chart" height="280"></canvas>
+    </div>
+
+    <div class="panel order-panel">
+      <h2>Place Demo Trade</h2>
+      <label>Currency pair</label>
+      <select id="pairSelect"></select>
+      <label>Lot size</label>
+      <input id="lots" type="number" min="0.01" step="0.01" value="0.10">
+      <div class="quote">
+        <span>Current price</span><strong id="orderPrice">1.0850</strong>
       </div>
-    </section>
-
-    <section class="card">
-      <h2>Demo Account</h2>
-      <div class="stats">
-        <div><span>Balance</span><strong id="balance">$10,000.00</strong></div>
-        <div><span>Open Trade</span><strong id="position">None</strong></div>
+      <div class="trade-buttons">
+        <button class="buy" onclick="openTrade('BUY')">BUY</button>
+        <button class="sell" onclick="openTrade('SELL')">SELL</button>
       </div>
-      <button class="reset" onclick="resetAccount()">Reset Demo</button>
-    </section>
+      <p class="hint">Trades are simulated locally in your browser.</p>
+    </div>
+  </section>
 
-    <section class="card">
-      <h2>Trade History</h2>
-      <div id="history">No trades yet.</div>
-    </section>
+  <section class="panel">
+    <div class="panel-head"><h2>Open Positions</h2><span id="positionCount">0 positions</span></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Pair</th><th>Side</th><th>Lots</th><th>Entry</th><th>Current</th><th>Demo P/L</th><th></th></tr></thead>
+        <tbody id="positions"></tbody>
+      </table>
+    </div>
+  </section>
 
-    <section class="card warning">
-      <h2>Important</h2>
-      <p>This project is a learning simulator only. It does not execute real trades, connect to a broker, or provide financial advice.</p>
-    </section>
-  </main>
+  <section class="panel">
+    <div class="panel-head"><h2>Trade History</h2></div>
+    <div id="history" class="history muted">No completed trades.</div>
+  </section>
+</main>
 
-  <script src="script.js"></script>
+<footer>ForexPro Demo • Educational simulator only • Not financial advice</footer>
+<script src="script.js"></script>
 </body>
 </html>
