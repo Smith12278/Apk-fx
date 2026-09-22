@@ -1,45 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alpha FX - V2 Demo Login</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
-body{background:#070c1f;color:#fff;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
-.box{background:#111a33;border:1px solid #1e2a50;border-radius:18px;padding:28px;width:100%;max-width:400px}
-.logo{font-weight:900;font-size:28px;color:#00e38c;text-align:center}.logo span{color:#fff}
-.badge{text-align:center;margin:10px 0;background:#1a274f;color:#6b84ff;border:1px solid #24325f;padding:6px;border-radius:20px;font-size:11px}
-h2{text-align:center;margin:16px 0 4px} p.sub{text-align:center;color:#8a95b8;font-size:13px;margin-bottom:18px}
-input{width:100%;padding:13px;border-radius:10px;border:1px solid #2a3a68;background:#0a1128;color:#fff;margin:8px 0;font-size:14px}
-.btn{width:100%;padding:14px;background:#00e38c;color:#000;border:none;border-radius:10px;font-weight:800;font-size:16px;margin-top:12px;cursor:pointer}
-.notice{margin-top:16px;padding:12px;background:#0a1128;border:1px dashed #2a3a68;border-radius:10px;font-size:11px;color:#8a95b8;text-align:center}
-</style>
-</head>
-<body>
-<div class="box">
-<div class="logo">ALPHA <span>FX</span></div>
-<div class="badge">V2 • DEMO • VIRTUAL-FUNDS ONLY</div>
-<h2>Demo Login</h2>
-<p class="sub">Alpha FX branding - V2 Design</p>
-
-<input id="email" type="email" placeholder="Email field - demo@alphafx.com" value="demo@alphafx.com">
-<input id="pass" type="password" placeholder="Password field">
-
-<button class="btn" onclick="login()">Sign in to Demo</button>
-
-<div class="notice">
-🔒 Virtual-funds notice: This is a demo platform only.<br>
-No real money. Simulated prices for learning.
-</div>
-
-<p style="text-align:center;margin-top:14px;font-size:12px;color:#6b84ff">Test account: demo@alphafx.com / demo123</p>
-</div>
-
-<script>
-function login(){
- let e=document.getElementById('email').value;
- let p=document.getElementById('pass').value;
+<!value;
  if(e && p){
    localStorage.setItem('alphafx_email', e);
    alert('V2 Success! Login interface working.\nEmail: '+e+'\n\nNext: V3 will show dashboard');
@@ -50,5 +9,3 @@ function login(){
  }
 }
 </script>
-</body>
-</html>
