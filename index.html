@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forex Trading Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Forex Trading Simulator</h1>
+    <p>Educational demo — no real money or broker connection.</p>
+  </header>
 
+  <main class="container">
+    <section class="card">
+      <h2>Market</h2>
+      <div class="market">
+        <span>EUR/USD</span>
+        <strong id="price">1.0850</strong>
+      </div>
+      <div class="buttons">
+        <button class="buy" onclick="placeTrade('BUY')">BUY</button>
+        <button class="sell" onclick="placeTrade('SELL')">SELL</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Demo Account</h2>
+      <div class="stats">
+        <div><span>Balance</span><strong id="balance">$10,000.00</strong></div>
+        <div><span>Open Trade</span><strong id="position">None</strong></div>
+      </div>
+      <button class="reset" onclick="resetAccount()">Reset Demo</button>
+    </section>
+
+    <section class="card">
+      <h2>Trade History</h2>
+      <div id="history">No trades yet.</div>
+    </section>
+
+    <section class="card warning">
+      <h2>Important</h2>
+      <p>This project is a learning simulator only. It does not execute real trades, connect to a broker, or provide financial advice.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
