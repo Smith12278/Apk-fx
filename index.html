@@ -1,149 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ForexPro Demo</title>
+<title>Alpha FX - V2 Demo Login</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0b1020;color:#e8edf7;font-family:Inter,Arial,sans-serif}.topbar{height:70px;background:#11182a;border-bottom:1px solid #263149;display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;z-index:5}.brand{font-size:25px;font-weight:800}.brand span{color:#43d19e}.account{color:#9ca8bd}.account b{color:#fff;margin-left:10px}.hero,main{max-width:1200px;margin:auto}.hero{padding:40px 20px 25px;display:flex;justify-content:space-between;align-items:center}.eyebrow{font-size:12px;letter-spacing:2px;color:#43d19e;font-weight:bold}.hero h1{font-size:36px;margin:8px 0}.muted{color:#8e9ab0}.reset{background:#202a40;color:#fff;border:1px solid #35415d;padding:11px 16px;border-radius:8px;cursor:pointer}.pairs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0 20px 20px}.pair{background:#11182a;border:1px solid #263149;border-radius:10px;padding:16px;cursor:pointer}.pair:hover{border-color:#43d19e}.pair strong{display:block;margin:6px 0;font-size:20px}.up{color:#43d19e}.down{color:#ff7180}.grid{display:grid;grid-template-columns:2fr 1fr;gap:18px;padding:0 20px 20px}.panel{background:#11182a;border:1px solid #263149;border-radius:12px;padding:20px;margin:0 20px 20px}.grid .panel{margin:0}.panel-head{display:flex;justify-content:space-between;align-items:center}.panel h2{margin:0 0 15px}.badge{font-size:11px;padding:5px 8px;border-radius:6px;background:#183c35;color:#43d19e}canvas{width:100%;display:block;background:#0d1424;border-radius:8px}label{display:block;color:#9ca8bd;margin:14px 0 6px}select,input{width:100%;padding:12px;border-radius:7px;border:1px solid #35415d;background:#0d1424;color:#fff;font-size:15px}.quote{display:flex;justify-content:space-between;margin:18px 0;padding:12px;background:#0d1424;border-radius:7px}.trade-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px}.trade-buttons button{padding:13px;border:0;border-radius:7px;color:white;font-weight:800;cursor:pointer}.buy{background:#16865c}.sell{background:#c83e50}.hint{font-size:12px;color:#7e8aa0;text-align:center}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:13px;border-bottom:1px solid #263149;white-space:nowrap}th{color:#8996ad;font-size:12px}.close{background:#29344a;color:white;border:0;padding:7px 10px;border-radius:6px;cursor:pointer}.history div{padding:10px 0;border-bottom:1px solid #263149}footer{text-align:center;color:#6f7b91;padding:20px;font-size:12px}@media(max-width:800px){.pairs{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}.hero{align-items:flex-start;gap:15px;flex-direction:column}.hero h1{font-size:28px}}@media(max-width:500px){.pairs{grid-template-columns:1fr}.account{font-size:12px}}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{background:#070c1f;color:#fff;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
+.box{background:#111a33;border:1px solid #1e2a50;border-radius:18px;padding:28px;width:100%;max-width:400px}
+.logo{font-weight:900;font-size:28px;color:#00e38c;text-align:center}.logo span{color:#fff}
+.badge{text-align:center;margin:10px 0;background:#1a274f;color:#6b84ff;border:1px solid #24325f;padding:6px;border-radius:20px;font-size:11px}
+h2{text-align:center;margin:16px 0 4px} p.sub{text-align:center;color:#8a95b8;font-size:13px;margin-bottom:18px}
+input{width:100%;padding:13px;border-radius:10px;border:1px solid #2a3a68;background:#0a1128;color:#fff;margin:8px 0;font-size:14px}
+.btn{width:100%;padding:14px;background:#00e38c;color:#000;border:none;border-radius:10px;font-weight:800;font-size:16px;margin-top:12px;cursor:pointer}
+.notice{margin-top:16px;padding:12px;background:#0a1128;border:1px dashed #2a3a68;border-radius:10px;font-size:11px;color:#8a95b8;text-align:center}
 </style>
 </head>
 <body>
-<header class="topbar">
-  <div class="brand">Forex<span>Pro</span></div>
-  <div class="account">Demo Account <b id="balance">$10,000.00</b></div>
-</header>
+<div class="box">
+<div class="logo">ALPHA <span>FX</span></div>
+<div class="badge">V2 • DEMO • VIRTUAL-FUNDS ONLY</div>
+<h2>Demo Login</h2>
+<p class="sub">Alpha FX branding - V2 Design</p>
 
-<main>
-  <section class="hero">
-    <div>
-      <p class="eyebrow">TRADING DASHBOARD</p>
-      <h1>Practice forex trading</h1>
-      <p class="muted">A realistic demo interface for learning. No real orders are sent.</p>
-    </div>
-    <button class="reset" onclick="resetAccount()">Reset account</button>
-  </section>
+<input id="email" type="email" placeholder="Email field - demo@alphafx.com" value="demo@alphafx.com">
+<input id="pass" type="password" placeholder="Password field">
 
-  <section class="pairs" id="pairs"></section>
+<button class="btn" onclick="login()">Sign in to Demo</button>
 
-  <section class="grid">
-    <div class="panel chart-panel">
-      <div class="panel-head">
-        <div><h2 id="chartPair">EUR/USD</h2><span class="muted" id="chartPrice">1.0850</span></div>
-        <span class="badge">DEMO</span>
-      </div>
-      <canvas id="chart" height="280"></canvas>
-    </div>
+<div class="notice">
+🔒 Virtual-funds notice: This is a demo platform only.<br>
+No real money. Simulated prices for learning.
+</div>
 
-    <div class="panel order-panel">
-      <h2>Place Demo Trade</h2>
-      <label>Currency pair</label>
-      <select id="pairSelect"></select>
-      <label>Lot size</label>
-      <input id="lots" type="number" min="0.01" step="0.01" value="0.10">
-      <div class="quote">
-        <span>Current price</span><strong id="orderPrice">1.0850</strong>
-      </div>
-      <div class="trade-buttons">
-        <button class="buy" onclick="openTrade('BUY')">BUY</button>
-        <button class="sell" onclick="openTrade('SELL')">SELL</button>
-      </div>
-      <p class="hint">Trades are simulated locally in your browser.</p>
-    </div>
-  </section>
+<p style="text-align:center;margin-top:14px;font-size:12px;color:#6b84ff">Test account: demo@alphafx.com / demo123</p>
+</div>
 
-  <section class="panel">
-    <div class="panel-head"><h2>Open Positions</h2><span id="positionCount">0 positions</span></div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Pair</th><th>Side</th><th>Lots</th><th>Entry</th><th>Current</th><th>Demo P/L</th><th></th></tr></thead>
-        <tbody id="positions"></tbody>
-      </table>
-    </div>
-  </section>
-
-  <section class="panel">
-    <div class="panel-head"><h2>Trade History</h2></div>
-    <div id="history" class="history muted">No completed trades.</div>
-  </section>
-</main>
-
-<footer>ForexPro Demo • Educational simulator only • Not financial advice</footer>
 <script>
-const market={
- "EUR/USD":1.0850,"GBP/USD":1.2740,"USD/JPY":149.20,"USD/CHF":0.8740
-};
-let balance=10000, positions=[], history=[], selected="EUR/USD";
-let chartData=Array.from({length:40},()=>market[selected]);
-
-function money(n){return "$"+n.toFixed(2)}
-function renderPairs(){
- const box=document.getElementById("pairs");
- box.innerHTML=Object.entries(market).map(([p,v])=>`<div class="pair" onclick="selectPair('${p}')"><span>${p}</span><strong>${v.toFixed(4)}</strong><small class="up">Demo market</small></div>`).join("");
+function login(){
+ let e=document.getElementById('email').value;
+ let p=document.getElementById('pass').value;
+ if(e && p){
+   localStorage.setItem('alphafx_email', e);
+   alert('V2 Success! Login interface working.\nEmail: '+e+'\n\nNext: V3 will show dashboard');
+   // For V3 you will redirect to dashboard.html
+   window.location.href = 'dashboard.html';
+ } else {
+   alert('Please enter email and password - error message check');
+ }
 }
-function selectPair(p){
- selected=p; document.getElementById("pairSelect").value=p;
- document.getElementById("chartPair").textContent=p; updateOrder();
- chartData=Array.from({length:40},()=>market[p]); drawChart();
-}
-function updateOrder(){
- const p=market[selected];
- document.getElementById("orderPrice").textContent=p.toFixed(4);
- document.getElementById("chartPrice").textContent=p.toFixed(4);
-}
-function openTrade(side){
- const lots=parseFloat(document.getElementById("lots").value);
- if(!lots||lots<=0)return alert("Enter a valid lot size.");
- positions.push({id:Date.now(),pair:selected,side,lots,entry:market[selected]});
- renderPositions();
-}
-function closeTrade(id){
- const pos=positions.find(x=>x.id===id);
- if(!pos)return;
- const now=market[pos.pair];
- const direction=pos.side==="BUY"?1:-1;
- const pnl=(now-pos.entry)*direction*100000*pos.lots;
- balance+=pnl;
- history.unshift(`${pos.side} ${pos.pair} ${pos.lots.toFixed(2)} lots closed at ${now.toFixed(4)} | P/L ${money(pnl)}`);
- positions=positions.filter(x=>x.id!==id);
- renderPositions(); renderHistory(); updateBalance();
-}
-function renderPositions(){
- const body=document.getElementById("positions");
- body.innerHTML=positions.length?positions.map(x=>{
-   const now=market[x.pair], dir=x.side==="BUY"?1:-1;
-   const pnl=(now-x.entry)*dir*100000*x.lots;
-   return `<tr><td>${x.pair}</td><td>${x.side}</td><td>${x.lots.toFixed(2)}</td><td>${x.entry.toFixed(4)}</td><td>${now.toFixed(4)}</td><td class="${pnl>=0?'up':'down'}">${money(pnl)}</td><td><button class="close" onclick="closeTrade(${x.id})">Close</button></td></tr>`;
- }).join(""):`<tr><td colspan="7" class="muted">No open positions.</td></tr>`;
- document.getElementById("positionCount").textContent=positions.length+" position"+(positions.length===1?"":"s");
-}
-function renderHistory(){
- document.getElementById("history").innerHTML=history.length?history.map(x=>`<div>${x}</div>`).join(""):"No completed trades.";
-}
-function updateBalance(){document.getElementById("balance").textContent=money(balance)}
-function resetAccount(){balance=10000;positions=[];history=[];Object.assign(market,{"EUR/USD":1.0850,"GBP/USD":1.2740,"USD/JPY":149.20,"USD/CHF":0.8740});renderAll()}
-function drawChart(){
- const c=document.getElementById("chart"),ctx=c.getContext("2d"),dpr=devicePixelRatio||1;
- c.width=c.clientWidth*dpr;c.height=280*dpr;ctx.scale(dpr,dpr);
- const w=c.clientWidth,h=280;ctx.clearRect(0,0,w,h);
- ctx.strokeStyle="#263149";ctx.lineWidth=1;
- for(let i=1;i<5;i++){let y=i*h/5;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}
- const min=Math.min(...chartData),max=Math.max(...chartData),range=max-min||.001;
- ctx.strokeStyle="#43d19e";ctx.lineWidth=2;ctx.beginPath();
- chartData.forEach((v,i)=>{let x=i*(w/(chartData.length-1)),y=h-25-((v-min)/range)*(h-50);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.stroke();
-}
-function renderAll(){
- const sel=document.getElementById("pairSelect");sel.innerHTML=Object.keys(market).map(p=>`<option>${p}</option>`).join("");sel.value=selected;
- renderPairs();renderPositions();renderHistory();updateBalance();updateOrder();drawChart();
-}
-setInterval(()=>{
- Object.keys(market).forEach(p=>market[p]+= (Math.random()-.5)*(p==="USD/JPY"?.12:.0012));
- if(selected==="EUR/USD"){} chartData.push(market[selected]);chartData.shift();
- renderPairs();renderPositions();updateOrder();drawChart();
-},2000);
-window.addEventListener("resize",drawChart);renderAll();
-
 </script>
 </body>
 </html>
